@@ -1,0 +1,13 @@
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+
+# Editör ayarları
+.vscode/
+.idea/
+
+# Yükleme klasörü (test görselleri repoya gitmesin, klasör yapısı korunsun)
+upload/*
+!upload/.gitkeep
+
+core/config.php
