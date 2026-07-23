@@ -12,6 +12,8 @@
     include "includes/layout-top.php";
 ?>
 
+<a href="logout.php" class="cikis-buton">Çıkış Yap</a>
+
 <h1>Hoş geldin, <?php echo htmlspecialchars($_SESSION["admin_kullanici_adi"]); ?>!</h1>
 <p class="admin-welcome-sub">Admin paneline başarıyla giriş yaptın. Yönetmek istediğin bölümü seç:</p>
 
