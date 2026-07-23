@@ -52,6 +52,7 @@
 <html>
 <head>
     <title>Ayarlar</title>
+    <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
 
@@ -74,6 +75,15 @@
 
     <label>Site Adı:</label><br>
     <input type="text" name="site_adi" value="<?php echo htmlspecialchars($ayarlar["site_adi"]); ?>"><br><br>
+
+    <label>Öne Çıkan Söz:</label><br>
+    <textarea name="soz_metni" rows="3" cols="50"><?php echo htmlspecialchars($ayarlar["soz_metni"]); ?></textarea><br><br>
+
+    <label>Söz Sahibinin Adı:</label><br>
+    <input type="text" name="soz_sahibi" value="<?php echo htmlspecialchars($ayarlar["soz_sahibi"]); ?>"><br><br>
+
+    <label>Söz Sahibinin Unvanı:</label><br>
+    <input type="text" name="soz_unvan" value="<?php echo htmlspecialchars($ayarlar["soz_unvan"]); ?>"><br><br>
 
     <label>Telefon:</label><br>
     <input type="text" name="telefon" value="<?php echo htmlspecialchars($ayarlar["telefon"]); ?>"><br><br>

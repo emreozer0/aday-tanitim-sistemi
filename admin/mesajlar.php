@@ -25,6 +25,7 @@
 <html>
 <head>
     <title>Gelen Mesajlar</title>
+    <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
 

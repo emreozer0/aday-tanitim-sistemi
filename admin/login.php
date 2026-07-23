@@ -35,6 +35,7 @@
 <html>
 <head>
     <title>Admin Girişi</title>
+    <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
 

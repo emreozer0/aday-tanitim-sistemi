@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #2b2b2b;
+    padding: 30px;
+}
+
+h1 {
+    color: #e30613;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 20px 0 10px;
+    color: #2b2b2b;
+}
+
+a {
+    color: #e30613;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #e30613;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #b8050f;
+}
+
+/* Liste kutuları (haberler, galeri, mesajlar) */
+main div, body > div {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}

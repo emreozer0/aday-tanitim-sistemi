@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin-style.css">
 </head>
 <body>
 
@@ -21,6 +22,7 @@
 <p><a href="haberler.php">Haberleri Yönet</a></p>
 <p><a href="galeri.php">Galeriyi Yönet</a></p>
 <p><a href="mesajlar.php">Gelen Mesajları Görüntüle</a></p>
+<p><a href="hizmetler.php">Hizmet Kartlarını Yönet</a></p>
 
 </body>
 </html>
