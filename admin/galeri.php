@@ -69,12 +69,27 @@
 <h2>Mevcut Fotoğraflar</h2>
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 <?php foreach ($fotograflar as $foto): ?>
-    <div style="border: 1px solid #ccc; padding: 5px;">
-        <img src="../upload/galeri/<?php echo $foto["fotograf"]; ?>" width="150"><br>
-        <a href="galeri_sil.php?id=<?php echo $foto["id"]; ?>" onclick="return confirm('Silmek istediğine emin misin?');">Sil</a>
+    <div>
+        <img src="upload/galeri/<?php echo $foto["fotograf"]; ?>" width="200" onclick="lightboxAc(this.src)">
     </div>
 <?php endforeach; ?>
 </div>
+
+<div id="lightbox" class="lightbox" onclick="lightboxKapat()">
+    <span class="lightbox-kapat">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+    function lightboxAc(kaynak) {
+        document.getElementById("lightbox-img").src = kaynak;
+        document.getElementById("lightbox").classList.add("acik");
+    }
+
+    function lightboxKapat() {
+        document.getElementById("lightbox").classList.remove("acik");
+    }
+</script>
 
 </body>
 </html>

@@ -11,3 +11,9 @@ upload/*
 !upload/.gitkeep
 
 core/config.php
+
+/upload/*
+!/upload/.gitkeep
+*.log
+.DS_Store
+Thumbs.db

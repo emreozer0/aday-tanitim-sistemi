@@ -4,31 +4,235 @@
     box-sizing: border-box;
 }
 
+:root {
+    --brand: #e30613;
+    --brand-dark: #b8050f;
+    --ink: #2b2b2b;
+    --ink-soft: #6b6b6b;
+    --sidebar-bg: #1c1614;
+    --sidebar-bg-soft: #241b18;
+    --border: #e7e5e4;
+    --bg: #f4f4f4;
+    --card: #ffffff;
+}
+
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #2b2b2b;
-    padding: 30px;
+    background-color: var(--bg);
+    color: var(--ink);
 }
 
-h1 {
-    color: #e30613;
-    margin-bottom: 10px;
+h1 { color: var(--brand); margin-bottom: 10px; }
+h2 { margin: 20px 0 10px; color: var(--ink); }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ============ ADMIN SHELL / NAVBAR ============ */
+/* Bu bölüm sadece includes/layout-top.php kullanan sayfalarda devreye girer */
+
+.admin-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h2 {
-    margin: 20px 0 10px;
-    color: #2b2b2b;
+.admin-topbar {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 0 28px;
+    height: 62px;
+    background: var(--sidebar-bg);
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
-a {
-    color: #e30613;
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.admin-brand-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.admin-brand-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.admin-nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow-x: auto;
+    height: 100%;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    height: 100%;
+    color: rgba(255,255,255,0.72);
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin-nav-link:hover {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+.admin-nav-link.is-active {
+    background: rgba(227,6,19,0.16);
+    color: #fff;
+    border-bottom-color: var(--brand);
 }
+
+.admin-nav-icon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+.admin-topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.admin-user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-user-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.admin-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    color: rgba(255,255,255,0.72);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin-logout-btn:hover {
+    background: rgba(227,6,19,0.16);
+    color: #fff;
+}
+
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-content {
+    padding: 28px 32px 48px;
+    flex: 1;
+}
+
+.admin-welcome-sub {
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+}
+
+/* ============ DASHBOARD KARTLARI ============ */
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.dash-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    border-top: 3px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.dash-card:hover {
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-top-color: var(--brand);
+}
+
+.dash-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: rgba(227,6,19,0.1);
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dash-card-icon svg { width: 20px; height: 20px; }
+
+.dash-card-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+}
+
+.dash-card-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+}
+
+/* ============ FORM / BUTON / LİSTE (mevcut sayfalarla uyumlu) ============ */
 
 form {
     background: white;
@@ -58,7 +262,7 @@ textarea {
 }
 
 button {
-    background-color: #e30613;
+    background-color: var(--brand);
     color: white;
     border: none;
     padding: 10px 25px;
@@ -68,15 +272,31 @@ button {
     font-weight: 600;
 }
 
-button:hover {
-    background-color: #b8050f;
-}
+button:hover { background-color: var(--brand-dark); }
 
 /* Liste kutuları (haberler, galeri, mesajlar) */
+.admin-content div, .admin-content > * div {
+    /* not: aşağıdaki genel kural yerine .list-item gibi bir class kullanmanız
+       ileride daha güvenli olur, şimdilik eski davranışı koruyoruz */
+}
+
 main div, body > div {
     background: white;
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 12px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 860px) {
+    .admin-brand-text,
+    .admin-user-name,
+    .admin-nav-link span {
+        display: none;
+    }
+    .admin-topbar { gap: 12px; padding: 0 14px; }
+    .admin-nav-link { padding: 0 10px; }
+    .admin-content { padding: 20px 18px 32px; }
 }

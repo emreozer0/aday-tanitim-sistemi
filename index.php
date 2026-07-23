@@ -18,8 +18,8 @@
     $stmt->execute();
     $ozgecmis = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Son 3 haberi çek
-    $stmt = $conn->prepare("SELECT * FROM haberler ORDER BY tarih DESC LIMIT 3");
+    // Son 8 haberi çek (carousel için)
+    $stmt = $conn->prepare("SELECT * FROM haberler ORDER BY tarih DESC LIMIT 8");
     $stmt->execute();
     $son_haberler = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -79,15 +79,32 @@
 
     <section>
         <h2>Son Haberler</h2>
-        <?php foreach ($son_haberler as $haber): ?>
-            <div class="scroll-reveal">
-                <?php if (!empty($haber["fotograf"])): ?>
-                    <img src="upload/haberler/<?php echo $haber["fotograf"]; ?>" width="150">
-                <?php endif; ?>
-                <h3><?php echo htmlspecialchars($haber["baslik"]); ?></h3>
-                <p><?php echo $haber["tarih"]; ?></p>
+
+        <div class="carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <?php foreach ($son_haberler as $haber): ?>
+                    <div class="carousel-slayt">
+                        <?php if (!empty($haber["fotograf"])): ?>
+                            <img src="upload/haberler/<?php echo $haber["fotograf"]; ?>">
+                        <?php endif; ?>
+                        <div class="carousel-metin">
+                            <h3><?php echo htmlspecialchars($haber["baslik"]); ?></h3>
+                            <p><?php echo $haber["tarih"]; ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
+
+            <button class="carousel-ok carousel-ok-sol" onclick="carouselDegis(-1)">‹</button>
+            <button class="carousel-ok carousel-ok-sag" onclick="carouselDegis(1)">›</button>
+
+            <div class="carousel-noktalar" id="carouselNoktalar">
+                <?php foreach ($son_haberler as $index => $haber): ?>
+                    <span class="nokta <?php echo $index === 0 ? 'aktif' : ''; ?>" onclick="carouselGit(<?php echo $index; ?>)"></span>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
         <a href="haberler.php">Tüm Haberler</a>
     </section>
 
@@ -134,6 +151,7 @@
 </footer>
 
 <script>
+    // --- Scroll ile beliren elemanlar ---
     const elemanlar = document.querySelectorAll('.scroll-reveal');
 
     const gozlemci = new IntersectionObserver((girisler) => {
@@ -145,6 +163,39 @@
     }, { threshold: 0.15 });
 
     elemanlar.forEach((eleman) => gozlemci.observe(eleman));
+
+    // --- Haber Carousel ---
+    let carouselIndex = 0;
+    const carouselTrack = document.getElementById("carouselTrack");
+    const carouselSlaytSayisi = carouselTrack ? carouselTrack.children.length : 0;
+    const noktalar = document.querySelectorAll("#carouselNoktalar .nokta");
+
+    function carouselGoster() {
+        if (!carouselTrack) return;
+        carouselTrack.style.transform = `translateX(-${carouselIndex * 100}%)`;
+
+        noktalar.forEach((nokta, i) => {
+            nokta.classList.toggle("aktif", i === carouselIndex);
+        });
+    }
+
+    function carouselDegis(yon) {
+        carouselIndex += yon;
+        if (carouselIndex < 0) carouselIndex = carouselSlaytSayisi - 1;
+        if (carouselIndex >= carouselSlaytSayisi) carouselIndex = 0;
+        carouselGoster();
+    }
+
+    function carouselGit(index) {
+        carouselIndex = index;
+        carouselGoster();
+    }
+
+    if (carouselSlaytSayisi > 1) {
+        setInterval(() => {
+            carouselDegis(1);
+        }, 4000);
+    }
 </script>
 
 </body>
